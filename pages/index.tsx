@@ -1,15 +1,22 @@
 import { ReactElement } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Head from 'next/head';
 import Layout from '../components/Layout';
 import { NextPageWithLayout } from './_app';
-import Head from 'next/head';
+import { getLatestPosts, PostPreview } from '../utils/mdx-utils';
+import PostItem from '../components/Post';
 
-const HomePage: NextPageWithLayout = () => {
+interface HomePageProps {
+  latestPosts: PostPreview[];
+  // projects:
+}
+
+const HomePage: NextPageWithLayout = ({ latestPosts }: HomePageProps) => {
   return (
     <div className="container mx-auto">
       <Head>
-        <title>Home | Hamza Faraji</title>
+        <title key={'title'}>Home | Hamza Faraji</title>
       </Head>
       <div className="border-b border-grey-lighter py-16 lg:py-20">
         <div>
@@ -79,7 +86,7 @@ const HomePage: NextPageWithLayout = () => {
           <h3 className="ml-3 font-body text-2xl font-semibold text-primary dark:text-white">
             My Posts
           </h3>
-          {/* <Link
+          <Link
             href="/blog"
             className="flex items-center pl-10 font-body italic text-green transition-colors hover:text-secondary dark:text-green-light dark:hover:text-secondary"
           >
@@ -91,11 +98,12 @@ const HomePage: NextPageWithLayout = () => {
               width={16}
               height={10}
             />
-          </Link> */}
+          </Link>
         </div>
-        <h5 className="flex items-center pl-8 font-body text-green dark:text-green-light ">
-          Coming soon ...
-        </h5>
+
+        {latestPosts.map(({ frontMatter, slug }) => (
+          <PostItem frontMatter={frontMatter} slug={slug} key={slug} />
+        ))}
       </div>
 
       <div className="pb-16 lg:pb-20">
@@ -121,5 +129,15 @@ const HomePage: NextPageWithLayout = () => {
 HomePage.getLayout = function getLayout(page: ReactElement) {
   return <Layout>{page}</Layout>;
 };
+
+export async function getStaticProps() {
+  const latestPosts = await getLatestPosts();
+
+  return {
+    props: {
+      latestPosts
+    }
+  };
+}
 
 export default HomePage;

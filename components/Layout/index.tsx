@@ -1,18 +1,11 @@
 import { PropsWithChildren } from 'react';
 import Head from 'next/head';
-import { Poppins } from '@next/font/google';
 import Footer from '../Footer';
 import Header from '../Header';
 
-const poppins = Poppins({
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-poppins',
-  subsets: ['latin']
-});
-
 const Layout = ({ children }: PropsWithChildren) => {
   return (
-    <div className={`${poppins.variable} font-sans`}>
+    <div>
       <Head>
         <meta charSet="utf-8" />
         <meta content="IE=edge,chrome=1" httpEquiv="X-UA-Compatible" />
@@ -35,6 +28,10 @@ const Layout = ({ children }: PropsWithChildren) => {
         <meta name="twitter:site" content="@farajist" />
         <link rel="icon" type="image/png" href="/assets/img/favicon.ico" />
         <link rel="canonical" href="https://farajist.com/" />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/github-dark.min.css"
+        ></link>
 
         <meta property="og:title" content="Hamza Faraji" key="title" />
       </Head>

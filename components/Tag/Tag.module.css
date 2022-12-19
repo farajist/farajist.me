@@ -1,0 +1,11 @@
+.tag {
+  @apply mb-4 mr-4 last:mr-0 inline-block rounded-full px-2 py-1 font-body text-sm;
+}
+
+.tag--tech {
+  @apply text-blue bg-blue-light;
+}
+
+.tag--stuff {
+  @apply text-green bg-green-light;
+}

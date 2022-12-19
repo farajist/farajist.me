@@ -8,8 +8,8 @@ interface NavigationItem {
 }
 
 const navigation: NavigationItem[] = [
-  { to: '/', name: 'Intro' }
-  // { to: '/blog', name: 'Blog' },
+  { to: '/', name: 'Intro' },
+  { to: '/blog', name: 'Blog' }
   // { to: '/uses', name: 'Uses' },
   // { to: '/contact', name: 'Contact' }
 ];
