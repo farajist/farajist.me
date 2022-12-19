@@ -12,7 +12,7 @@ interface HomePageProps {
   // projects:
 }
 
-const HomePage: NextPageWithLayout = ({ latestPosts }: HomePageProps) => {
+const HomePage = ({ latestPosts }: HomePageProps) => {
   return (
     <div className="container mx-auto">
       <Head>
