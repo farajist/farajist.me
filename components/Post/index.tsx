@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 import Link from 'next/link';
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import Tag from '../Tag';
 import { PostPreview } from '../../utils/mdx-utils';
 
