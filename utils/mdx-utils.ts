@@ -7,7 +7,7 @@ export type PostFrontMatter = {
   description: string;
   publishedDate: string;
   duration: number /* in minutes */;
-  tags: string[];
+  tags?: string[];
 };
 
 export interface PostPreview {
