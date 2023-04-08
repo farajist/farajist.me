@@ -16,18 +16,18 @@ const Layout = ({ children }: PropsWithChildren) => {
         <meta property="og:locale" content="en_US" />
         <meta property="og:url" content="https://farajist.me/" />
         <meta
-          name="description"
-          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          name="og:description"
+          content="farajist.me a modest log of my journey through tech, reading and life learnings"
         />
-        <meta property="og:site_name" content="Atlas Template" />
+        <meta property="og:site_name" content="farajist.me" />
         <meta
           property="og:image"
-          content="https://atlas.tailwindmade.com/assets/img/social.jpg"
+          content="https://images.unsplash.com/photo-1558304970-abd589baebe5?w=640"
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@farajist" />
         <link rel="icon" type="image/png" href="/assets/img/favicon.ico" />
-        <link rel="canonical" href="https://farajist.com/" />
+        <link rel="canonical" href="https://farajist.me/" />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/github-dark.min.css"
