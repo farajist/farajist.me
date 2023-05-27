@@ -3,7 +3,7 @@ title: Introducing lego.ts
 publishedDate: 2022/12/19
 duration: 5
 tags:
-  -
+  - tech
 ---
 
 ## Introduction
@@ -11,10 +11,20 @@ tags:
 Dependency injection is a concept that has been at the core of many software components since its inception, it permits
 the inversion of control .....
 
-## Limitation of Nodejs's module system
+## Why not just use `require()` or `import`
 
-## Why lego
+## Why lego ?
 
-## How it works ?
+Imagine having a system that needs to fetch data from different sources and store it to a database, in a scenario which the data sources 
+are known and limited we can implement the fetching logic in place in form of functions for example, [that can be called when required]
+
+However, it is often the case that such systems require extension either by adding new data sources or updating the fetching logic of existing ones,
+with more components in place, maintenance can get tricky and modularization kicks in, this is the problem `lego` addresses.
+
+## Creating a plugin with `lego`
+
+### The plugin manifest
+
+### The container
 
 ## Roadmap and further discussion
