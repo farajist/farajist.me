@@ -3,7 +3,7 @@ title: Introducing lego.ts
 publishedDate: 2022/12/19
 duration: 5
 tags:
-  -
+  - tech
 ---
 
 ## Introduction
@@ -11,10 +11,56 @@ tags:
 Dependency injection is a concept that has been at the core of many software components since its inception, it permits
 the inversion of control .....
 
-## Limitation of Nodejs's module system
+## Why not just use `require()` or `import`
 
-## Why lego
+While CommonJS's `require` and ES6's `import` are the Nodejs's way of supporting modules, these come short at several features such as: 
 
-## How it works ?
+#### Discoverability
 
-## Roadmap and further discussion
+Without explicitly requiring or importing a module, the runtime has no way of using a module, whereas 
+by setting the right container configuration and plugin manifest, `lego` is able to auto-discover and load plugins.
+
+#### Hot loading
+
+In Nodejs modules cannot be resolved at runtime, which limit the extensibility of the program.
+
+#### Requirement validation
+
+Node's module system offers no way to validate what has been imported and result can be surprising at runtime, `lego` container 
+ensures that the resolved package conforms to the expected function type.
+
+## Why lego ?
+
+Imagine having a system that needs to fetch data from different sources and store it to a database, in a scenario which the data sources 
+are known and limited we can implement the fetching logic in place in the form of functions for example, [that can be called when required]
+
+However, it is often the case that such systems require extension either by adding new data sources or updating the fetching logic of existing ones,
+with more components in place, maintenance can get tricky and the need for a modular design kicks in, this is the problem `lego` addresses.
+
+## Creating a plugin with `lego`
+
+The idea behind `lego` is as simple as having a uniform 
+
+### The plugin manifest
+
+The manifest is a plugin descriptor, it is basically a simple YAML file with two necessary pieces of information: the plugin identifier (name) and 
+the entry point (main.js), the current version of lego only support entry points that export a function:
+
+```yaml
+version: '0.0.0' # optional
+name: 'hello' # should be unique
+main: 'main.js'
+```
+
+### The container
+
+The container is the interface used to give access to loaded plugin, a container instance is created only once at the top level of the app, the returned
+object yields a resolve function that can be called with the plugin id to obtain a the defaultly exported function of the plugin:
+
+```typescript
+  const { resolve } = createContainer({ paths: ['node_modules', 'my_plugins'] });
+  // resolve performs simple callback lookup using plugin name
+  const sayHello = resolve('hello');
+  // sayHello now can be called like a normal function
+  console.log(sayHello());
+```

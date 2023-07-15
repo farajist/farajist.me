@@ -3,6 +3,7 @@ import Link from 'next/link';
 import GithubIcon from '../Icons/GithubIcon';
 import LinkedInIcon from '../Icons/LinkedInIcon';
 import TwitterIcon from '../Icons/TwitterIcon';
+import dayjs from 'dayjs';
 
 export default function Footer() {
   return (
@@ -18,7 +19,7 @@ export default function Footer() {
             />
           </Link>
           <p className="pt-5 font-body font-light text-primary dark:text-white sm:pt-0">
-            ©2022 Hamza Faraji.
+            ©{dayjs().year()} Hamza Faraji.
           </p>
         </div>
         <div className="mr-auto flex items-center pt-5 sm:mr-0 sm:pt-0">
